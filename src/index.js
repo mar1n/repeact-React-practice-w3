@@ -5,29 +5,22 @@ import Gallery from "./Kodiri";
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      model: "Mustang",
-    };
-  }
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({model: "Reanult"})
-    }, 1000)
-  }
-  render() {
-    return(
-      <div>
-        <h1>My Car model is {this.state.model}</h1>
-      </div>
-    )
-  }
+function MissedGoal() {
+  return <h1>MISSED!</h1>;
+}
+
+function MadeGoal() {
+  return <h1>Goal!</h1>
+}
+
+function Goal(props) {
+  return (
+    props.isGoal ? <MadeGoal /> : <MissedGoal />
+  )
 }
 
 ReactDOM.render(
-  <Header carModel="Reanult"/>,
+  <Goal isGoal="false" />,
   document.getElementById('root')
 );
 
