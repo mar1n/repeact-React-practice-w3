@@ -5,10 +5,30 @@ import Gallery from "./Kodiri";
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
 
-const myFirstElement = <h1>Hello World!</h1>;
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  render() {
+    return(
+      <div>
+        <h1>My Car {this.state.brand}</h1>
+        <p>It is a {this.state.color}
+        {this.state.model}from {this.state.year}
+        </p>
+      </div>
+    )
+  }
+}
 
 ReactDOM.render(
-  <Gallery />,
+  <Car />,
   document.getElementById('root')
 );
 
