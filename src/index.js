@@ -5,22 +5,28 @@ import Gallery from "./Kodiri";
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
 
-function MissedGoal() {
-  return <h1>MISSED!</h1>;
+function Car(props) {
+  return <li>{props.model}</li>
 }
 
-function MadeGoal() {
-  return <h1>Goal!</h1>
-}
-
-function Goal(props) {
-  return (
-    props.isGoal ? <MadeGoal /> : <MissedGoal />
+function Garage() {
+  const cars = [
+    {id:1, brand: 'Ford'},
+    {id:2, brand: 'LandRover'},
+    {id:3, brand: 'Fiat'},
+    {id:4, brand: 'Reanulat'},
+  ]
+  return(
+    <div>
+     {cars.map(car => {
+       return <li key={car.id}>{car.brand}</li>
+     })} 
+    </div>
   )
 }
 
 ReactDOM.render(
-  <Goal isGoal="false" />,
+  <Garage/>,
   document.getElementById('root')
 );
 
