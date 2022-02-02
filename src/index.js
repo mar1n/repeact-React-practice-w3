@@ -12,8 +12,10 @@ class Header extends React.Component {
       model: "Mustang",
     };
   }
-  static getDerivedStateFromProps(props, state) {
-    return { model: props.carModel}
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({model: "Reanult"})
+    }, 1000)
   }
   render() {
     return(
