@@ -5,34 +5,27 @@ import Gallery from "./Kodiri";
 import App from "./App";
 import reportWebVitals from './reportWebVitals';
 
-class Car extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      brand: "Ford",
       model: "Mustang",
-      color: "red",
-      year: 1964
     };
   }
-  changeColor = () => {
-    this.setState({color: "black"})
+  static getDerivedStateFromProps(props, state) {
+    return { model: props.carModel}
   }
   render() {
     return(
       <div>
-        <h1>My Car {this.state.brand}</h1>
-        <p>It is a {this.state.color}
-        {this.state.model}from {this.state.year}
-        </p>
-        <button onClick={this.changeColor}>Change color</button>
+        <h1>My Car model is {this.state.model}</h1>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Car />,
+  <Header carModel="Reanult"/>,
   document.getElementById('root')
 );
 
