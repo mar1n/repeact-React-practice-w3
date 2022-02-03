@@ -2,49 +2,32 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import Gallery from "./Kodiri";
-import App from "./App";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+
 import reportWebVitals from "./reportWebVitals";
 
-function MyForm() {
-  const [inputs, setInputs] = useState({});
-
-  const handleChange = (event) => {
-    console.log('event', event)
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('inputs', inputs);
-    alert(inputs);
-  };
-  return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor=''>
-        Enter your name:
-        <input
-          type='text'
-          name='username'
-          value={inputs.username || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Enter your age:
-        <input
-          type='number'
-          name='age'
-          value={inputs.age || ""}
-          onChange={handleChange}
-        />
-      </label>
-      <input type="submit"/>
-    </form>
-  );
+function App() {
+  return(
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
-ReactDOM.render(<MyForm />, document.getElementById("root"));
+
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
