@@ -1,9 +1,7 @@
 export const reducer = (state = {}, action) => {
     switch (action.type) {
-     case 'SIMPLE_ACTION':
-      return {
-       result: action.payload
-      }
+     case 'SHOW_LOGIN':
+      return  action.payload;
      default:
       return state
     }
