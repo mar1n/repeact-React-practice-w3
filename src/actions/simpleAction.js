@@ -4,3 +4,9 @@ export const showLogin = () => (dispatch) => {
     payload: { isLoginVisible: true },
   });
 };
+export const hideLogin = () => (dispatch) => {
+  dispatch({
+    type: "HIDE_LOGIN",
+    payload: { isLoginVisible: false },
+  });
+};
