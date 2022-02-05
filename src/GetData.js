@@ -5,11 +5,16 @@ function GetData() {
 
     useEffect( () => {
         async function api() {
-            const response = await fetch(
-                `https://api.github.com/users/timmywheels/repos`
-              );
-            const result = await response.json();
-            setData(data => [...result]);
+            try {
+
+                const response = await fetch(
+                    `https://api.github.com/users/timmywheels/repos`
+                  );
+                const result = await response.json();
+                setData(data => [...result]);
+            } catch(err) {
+                console.log('err', err);
+            }
         }
         api();
     });
