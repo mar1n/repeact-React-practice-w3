@@ -1,3 +1,10 @@
 body {
     background-color: green;
 }
+
+.todo-item {
+    padding: 15px;
+}
+.todo-item.is-checked {
+    background: yellow;
+}
