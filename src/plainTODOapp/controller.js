@@ -10,6 +10,9 @@ function appReady() {
 
 function renderTodos() {
     let rootNode = document.querySelector('#todoList');
+    while(rootNode.firstChild) {
+        rootNode.removeChild(rootNode.firstChild);
+    }
     model.todos.forEach(todo => {
         rootNode.appendChild(getTodoNode(todo));
     });
@@ -29,6 +32,7 @@ function getTodoNode(todo) {
 function getTodoCheckboxNode(todo) {
     let checkboxNode = document.createElement('input');
     checkboxNode.setAttribute('type', 'checkbox');
+    checkboxNode.setAttribute('onChange', 'toggleCheckbox()');
     if(todo.isChecked) {
         checkboxNode.setAttribute('checked', '');
     }
@@ -39,4 +43,9 @@ function getTodoLabelNode(todo) {
     let labelNode = document.createElement('label');
     labelNode.innerText = todo.text;
     return labelNode;
+}
+
+function toggleCheckbox() {
+    model.todos[0].isChecked = !model.todos[0].isChecked;
+    renderTodos();
 }
